@@ -1,26 +1,38 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <h1>Formatif</h1>
+  <todo-list v-bind:todos="todos"></todo-list>
+  <todo v-bind:todo="todos[0]"></todo>
+  <todo-edit></todo-edit>
+  <project-edit v-bind:projets="projets"></project-edit>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import TodoList from "./components/TodoList.vue";
+import Todo from "./components/Todo.vue";
+import TodoEdit from "./components/TodoEdit.vue";
+import ProjectEdit from "./components/ProjectEdit.vue";
 
 export default {
-  name: 'App',
+  name: "App",
+  data() {
+    return {
+      projets: [
+        { name: "Projet 1", email: "email@projet1.com" },
+        { name: "Projet 2", email: "email@projet2.com" },
+        { name: "Projet 3", email: "email@projet3.com" },
+      ],
+      todos: [
+        { title: "Todo A", project: "Project A", done: false },
+        { title: "Todo B", project: "Project B", done: true },
+        { title: "Todo C", project: "Project C", done: false },
+      ],
+    };
+  },
   components: {
-    HelloWorld
-  }
-}
+    TodoList,
+    Todo,
+    TodoEdit,
+    ProjectEdit,
+  },
+};
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
